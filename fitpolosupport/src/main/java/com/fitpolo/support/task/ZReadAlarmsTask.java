@@ -16,14 +16,14 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取闹钟
+ * @Description Alarma de lectura
  * @ClassPath com.fitpolo.support.task.ZReadAlarmsTask
  */
 public class ZReadAlarmsTask extends OrderTask {
     private static final int ORDERDATA_LENGTH = 3;
-    // 读取闹钟
+    // Alarma de lectura
     private static final int READ_ALARMS = 0x01;
-    // 读取闹钟详情
+    // Leer detalles de la alarma
     private static final int READ_ALARMS_DETAILS = 0x02;
 
     private byte[] orderData;
@@ -50,7 +50,7 @@ public class ZReadAlarmsTask extends OrderTask {
     public void parseValue(byte[] value) {
         int order_type = DigitalConver.byte2Int(value[1]);
         int data_length = DigitalConver.byte2Int(value[2]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (order_type) {
             case READ_ALARMS:
                 if (data_length != 1) {

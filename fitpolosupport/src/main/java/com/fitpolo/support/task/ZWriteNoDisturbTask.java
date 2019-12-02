@@ -17,7 +17,7 @@ import java.util.Locale;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置勿扰模式
+ * @Description Establecer no molestar
  * @ClassPath com.fitpolo.support.task.ZWriteNoDisturbTask
  */
 public class ZWriteNoDisturbTask extends OrderTask {
@@ -59,7 +59,7 @@ public class ZWriteNoDisturbTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

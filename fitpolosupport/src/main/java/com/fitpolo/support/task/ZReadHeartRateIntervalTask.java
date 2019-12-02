@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取心率间隔
+ * @Description Leer intervalo de frecuencia cardíaca
  * @ClassPath com.fitpolo.support.task.ZReadHeartRateIntervalTask
  */
 public class ZReadHeartRateIntervalTask extends OrderTask {
@@ -42,7 +42,7 @@ public class ZReadHeartRateIntervalTask extends OrderTask {
         }
         MokoSupport.getInstance().setHeartRateInterval(DigitalConver.byte2Int(value[3]) / 10);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

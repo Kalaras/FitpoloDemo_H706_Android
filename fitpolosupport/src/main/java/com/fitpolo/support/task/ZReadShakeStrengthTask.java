@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2019/3/1
  * @Author wenzheng.liu
- * @Description 读取震动强度
+ * @Description Lectura de intensidad de vibración
  * @ClassPath com.fitpolo.support.task.ZReadShakeStrengthTask
  */
 public class ZReadShakeStrengthTask extends OrderTask {
@@ -42,10 +42,10 @@ public class ZReadShakeStrengthTask extends OrderTask {
             return;
         }
         int shakeStrength = DigitalConver.byte2Int(value[3]);
-        LogModule.w("震动强度：" + shakeStrength);
+        LogModule.w("Intensidad de vibración：" + shakeStrength);
         MokoSupport.getInstance().setShakeStrength(shakeStrength);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

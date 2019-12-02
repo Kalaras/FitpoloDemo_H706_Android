@@ -14,7 +14,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/10
  * @Author wenzheng.liu
- * @Description 自定义蓝牙连接回调
+ * @Description Devolución de llamada de conexión Bluetooth personalizada
  * @ClassPath com.moko.support.handler.MokoConnStateHandler
  */
 public class MokoConnStateHandler extends BluetoothGattCallback {
@@ -31,7 +31,7 @@ public class MokoConnStateHandler extends BluetoothGattCallback {
         if (INSTANCE == null) {
             synchronized (MokoConnStateHandler.class) {
                 if (INSTANCE == null) {
-                    LogModule.i("创建BluetoothGattCallback！");
+                    LogModule.i("Crear BluetoothGattCallback！");
                     INSTANCE = new MokoConnStateHandler();
                 }
             }

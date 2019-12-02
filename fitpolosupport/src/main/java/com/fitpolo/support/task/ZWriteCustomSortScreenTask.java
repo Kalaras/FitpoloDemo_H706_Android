@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置自定义屏幕
+ * @Description Configurar una pantalla personalizada
  * @ClassPath com.fitpolo.support.task.ZWriteCustomSortScreenTask
  */
 public class ZWriteCustomSortScreenTask extends OrderTask {
@@ -52,7 +52,7 @@ public class ZWriteCustomSortScreenTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

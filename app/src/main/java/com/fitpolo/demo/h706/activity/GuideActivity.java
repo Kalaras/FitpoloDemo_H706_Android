@@ -86,7 +86,7 @@ public class GuideActivity extends BaseActivity {
             case AppConstants.PERMISSION_REQUEST_CODE: {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                        // 判断用户是否 点击了不再提醒。(检测该权限是否还可以申请)
+                        // Determine si el usuario ha hecho clic para dejar de recordar. (Verifique si aún se puede solicitar el permiso)
                         boolean shouldShowRequest = shouldShowRequestPermissionRationale(permissions[0]);
                         if (shouldShowRequest) {
                             if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
@@ -145,7 +145,7 @@ public class GuideActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        // 根据包名打开对应的设置界面
+                        // Abra la interfaz de configuración correspondiente de acuerdo con el nombre del paquete
                         intent.setData(Uri.parse("package:" + getPackageName()));
                         startActivityForResult(intent, AppConstants.REQUEST_CODE_PERMISSION);
                     }
@@ -213,7 +213,7 @@ public class GuideActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        // 根据包名打开对应的设置界面
+                        // Abra la interfaz de configuración correspondiente de acuerdo con el nombre del paquete
                         intent.setData(Uri.parse("package:" + getPackageName()));
                         startActivityForResult(intent, AppConstants.REQUEST_CODE_PERMISSION_2);
                     }

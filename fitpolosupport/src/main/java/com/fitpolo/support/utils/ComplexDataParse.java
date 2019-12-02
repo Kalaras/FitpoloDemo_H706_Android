@@ -18,12 +18,12 @@ import java.util.Locale;
 /**
  * @Date 2018/4/6
  * @Author wenzheng.liu
- * @Description 复杂数据解析类
+ * @Description Clase de análisis de datos complejos.
  * @ClassPath com.fitpolo.support.utils.ComplexDataParse
  */
 public class ComplexDataParse {
     public static DailyStep parseDailyStep(byte[] value, int index) {
-        // 日期
+        // Fecha
         Calendar calendar = Calendar.getInstance();
         calendar.set(2000 + DigitalConver.byte2Int(value[index]),
                 DigitalConver.byte2Int(value[index + 1]) - 1,
@@ -31,21 +31,21 @@ public class ComplexDataParse {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = calendar.getTime();
         String dateStr = sdf.format(date);
-        // 步数
+        // Pasos
         byte[] step = new byte[4];
         System.arraycopy(value, index + 3, step, 0, 4);
         String stepStr = DigitalConver.byteArr2Str(step);
 
-        // 时长
+        // Duración
         byte[] duration = new byte[2];
         System.arraycopy(value, index + 7, duration, 0, 2);
         String durationStr = DigitalConver.byteArr2Str(duration);
 
-        // 距离
+        // Distancia
         byte[] distance = new byte[2];
         System.arraycopy(value, index + 9, distance, 0, 2);
         String distanceStr = new DecimalFormat().format(DigitalConver.byteArr2Int(distance) * 0.1);
-        // 卡路里
+        // Calorías
         byte[] calories = new byte[2];
         System.arraycopy(value, index + 11, calories, 0, 2);
         String caloriesStr = DigitalConver.byteArr2Str(calories);
@@ -61,7 +61,7 @@ public class ComplexDataParse {
     }
 
     public static void parseDailyDetailStep(byte[] value, ArrayList<DailyDetailStep> dailyDetailSteps) {
-        // 日期
+        // Fecha
         Calendar calendar = Calendar.getInstance();
         for (int i = 0; i < 2; i++) {
             int year = DigitalConver.byte2Int(value[i * 7 + 4]);
@@ -76,7 +76,7 @@ public class ComplexDataParse {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
             Date date = calendar.getTime();
             String dateStr = sdf.format(date);
-            // 步数
+            // Pasos
             byte[] step = new byte[2];
             System.arraycopy(value, i * 7 + 9, step, 0, 2);
             String stepStr = DigitalConver.byteArr2Str(step);
@@ -96,26 +96,26 @@ public class ComplexDataParse {
                 || 0x0a != DigitalConver.byte2Int(value[2])) {
             return null;
         }
-        // 日期
+        // Fecha
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = calendar.getTime();
         String dateStr = sdf.format(date);
-        // 步数
+        // Pasos
         byte[] step = new byte[4];
         System.arraycopy(value, 3, step, 0, 4);
         String stepStr = DigitalConver.byteArr2Str(step);
 
-        // 时长
+        // Duración
         byte[] duration = new byte[2];
         System.arraycopy(value, 7, duration, 0, 2);
         String durationStr = DigitalConver.byteArr2Str(duration);
 
-        // 距离
+        // Distancia
         byte[] distance = new byte[2];
         System.arraycopy(value, 9, distance, 0, 2);
         String distanceStr = new DecimalFormat().format(DigitalConver.byteArr2Int(distance) * 0.1);
-        // 卡路里
+        // Calorías
         byte[] calories = new byte[2];
         System.arraycopy(value, 11, calories, 0, 2);
         String caloriesStr = DigitalConver.byteArr2Str(calories);
@@ -132,7 +132,7 @@ public class ComplexDataParse {
     public static DailySleep parseDailySleepIndex(byte[] value, HashMap<Integer, DailySleep> sleepsMap, int index) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Calendar calendar = Calendar.getInstance();
-        // 起始时间
+        // Hora de inicio
         calendar.set(2000 + DigitalConver.byte2Int(value[index + 1]),
                 DigitalConver.byte2Int(value[index + 2]) - 1,
                 DigitalConver.byte2Int(value[index + 3]),
@@ -140,7 +140,7 @@ public class ComplexDataParse {
                 DigitalConver.byte2Int(value[index + 5]));
         Date startDate = calendar.getTime();
         String startDateStr = sdf.format(startDate);
-        // 结束时间
+        // Hora final
         calendar.set(2000 + DigitalConver.byte2Int(value[index + 6]),
                 DigitalConver.byte2Int(value[index + 7]) - 1,
                 DigitalConver.byte2Int(value[index + 8]),
@@ -148,23 +148,23 @@ public class ComplexDataParse {
                 DigitalConver.byte2Int(value[index + 10]));
         Date endDate = calendar.getTime();
         String endDateStr = sdf.format(endDate);
-        // 深睡
+        // Sueño profundo
         byte[] deep = new byte[2];
         System.arraycopy(value, index + 11, deep, 0, 2);
         String deepStr = DigitalConver.byteArr2Str(deep);
-        // 浅睡
+        // Sueño ligero
         byte[] light = new byte[2];
         System.arraycopy(value, index + 13, light, 0, 2);
         String lightStr = DigitalConver.byteArr2Str(light);
-        // 清醒
+        // Sobrio
         byte[] awake = new byte[2];
         System.arraycopy(value, index + 15, awake, 0, 2);
         String awakeStr = DigitalConver.byteArr2Str(awake);
 
-        // 记录睡眠日期
+        // Registrar fecha de sueño
         String date = new SimpleDateFormat("yyy-MM-dd").format(endDate);
 
-        // 构造睡眠数据
+        // Construyendo datos de sueño
         DailySleep dailySleep = new DailySleep();
         dailySleep.date = date;
         dailySleep.startTime = startDateStr;
@@ -174,7 +174,7 @@ public class ComplexDataParse {
         dailySleep.awakeDuration = awakeStr;
         dailySleep.records = new ArrayList<>();
         LogModule.i(dailySleep.toString());
-        // 暂存睡眠数据，以index为key，以实例为value，方便更新record;
+        // Datos de suspensión temporales, con índice como clave e instancia como valor, para una fácil actualización de registros;
         sleepsMap.put(DigitalConver.byte2Int(value[index]), dailySleep);
         return dailySleep;
     }
@@ -188,7 +188,7 @@ public class ComplexDataParse {
             }
             for (int i = 0; i < len && index + 3 + i < value.length; i++) {
                 String hex = DigitalConver.byte2HexString(value[index + 3 + i]);
-                // 转换为二进制
+                // Convertir a binario
                 String binary = DigitalConver.hexString2binaryString(hex);
                 for (int j = binary.length(); j > 0; ) {
                     j -= 2;
@@ -230,9 +230,9 @@ public class ComplexDataParse {
     }
 
     public static void parseSportData(byte[] value, ArrayList<SportData> sportDatas) {
-        // 运动模式
+        // Modo deportivo
         int mode = DigitalConver.byte2Int(value[2]);
-        // 开始时间
+        // Hora de inicio
         Calendar calendar = Calendar.getInstance();
         calendar.set(2000 + DigitalConver.byte2Int(value[4]),
                 DigitalConver.byte2Int(value[5]) - 1,
@@ -243,26 +243,26 @@ public class ComplexDataParse {
         Date date = calendar.getTime();
         String startTimeStr = sdf.format(date);
 
-        // 时长
+        // Duración
         byte[] duration = new byte[2];
         System.arraycopy(value, 9, duration, 0, 2);
         String durationStr = DigitalConver.byteArr2Str(duration);
 
-        // 步数
+        // Pasos
         byte[] sportCount = new byte[3];
         System.arraycopy(value, 11, sportCount, 0, 3);
         String sportCountStr = DigitalConver.byteArr2Str(sportCount);
-        // 卡路里
+        // Calorías
         byte[] calories = new byte[2];
         System.arraycopy(value, 14, calories, 0, 2);
         String caloriesStr = DigitalConver.byteArr2Str(calories);
 
-        // 配速
+        // Ritmo
         byte[] speed = new byte[2];
         System.arraycopy(value, 16, speed, 0, 2);
         String speedStr = DigitalConver.byteArr2Str(speed);
 
-        // 距离
+        // Distancia
         byte[] distance = new byte[2];
         System.arraycopy(value, 18, distance, 0, 2);
         String distanceStr = new DecimalFormat("#.##").format(DigitalConver.byteArr2Int(distance) * 0.01);

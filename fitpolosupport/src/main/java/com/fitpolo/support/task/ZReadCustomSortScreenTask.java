@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * @Date 2019/3/1
  * @Author wenzheng.liu
- * @Description 读取自定义屏幕排序
+ * @Description Leer clasificación de pantalla personalizada
  * @ClassPath com.fitpolo.support.task.ZReadDateFormatTask
  */
 public class ZReadCustomSortScreenTask extends OrderTask {
@@ -44,7 +44,7 @@ public class ZReadCustomSortScreenTask extends OrderTask {
             return;
         }
         int shownLength = DigitalConver.byte2Int(value[3]);
-        LogModule.w("显示长度：" + shownLength);
+        LogModule.w("Longitud de la pantalla：" + shownLength);
         ArrayList<Integer> shownCodes = new ArrayList<>();
         for (int i = 0; i < shownLength; i++) {
             int code = DigitalConver.byte2Int(value[i + 4]);
@@ -52,7 +52,7 @@ public class ZReadCustomSortScreenTask extends OrderTask {
         }
         MokoSupport.getInstance().setCustomSortScreen(shownCodes);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

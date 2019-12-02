@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取时间格式
+ * @Description Leer formato de hora
  * @ClassPath com.fitpolo.support.task.ZReadTimeFormatTask
  */
 public class ZReadTimeFormatTask extends OrderTask {
@@ -42,7 +42,7 @@ public class ZReadTimeFormatTask extends OrderTask {
         }
         MokoSupport.getInstance().setTimeFormat(DigitalConver.byte2Int(value[3]));
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

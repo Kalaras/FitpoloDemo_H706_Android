@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取个人信息
+ * @Description Leer información personal
  * @ClassPath com.fitpolo.support.task.ZReadUserInfoTask
  */
 public class ZReadUserInfoTask extends OrderTask {
@@ -61,7 +61,7 @@ public class ZReadUserInfoTask extends OrderTask {
 
         MokoSupport.getInstance().setUserInfo(userInfo);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

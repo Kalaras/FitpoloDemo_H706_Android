@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取版本
+ * @Description Leer versión
  * @ClassPath com.fitpolo.support.task.ZReadVersionTask
  */
 public class ZReadVersionTask extends OrderTask {
@@ -41,7 +41,7 @@ public class ZReadVersionTask extends OrderTask {
         if (0x06 != DigitalConver.byte2Int(value[2])) {
             return;
         }
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         byte[] preCode = new byte[2];
         System.arraycopy(value, 3, preCode, 0, 2);
@@ -51,19 +51,19 @@ public class ZReadVersionTask extends OrderTask {
         System.arraycopy(value, 7, lastCode, 0, 2);
 
         String versionStr = DigitalConver.bytesToHexString(preCode) + "." + DigitalConver.bytesToHexString(middleCode) + "." + DigitalConver.bytesToHexString(lastCode);
-        // 内部版本，判断升级用
+        // Versión interna, utilizada para juzgar la actualización
         MokoSupport.versionCode = versionStr;
-        // 外部版本，客户用
+        // Versión externa, para clientes
         MokoSupport.versionCodeShow = versionStr;
-        // 大版本号，区分升级固件
+        // Número de versión grande para distinguir el firmware de actualización
         MokoSupport.firmwareEnum = FirmwareEnum.fromHeader(DigitalConver.bytesToHexString(preCode));
         if (MokoSupport.firmwareEnum == null) {
             return;
         }
-        // 小版本号，判断部分功能有无
+        // Número de versión pequeño para determinar si algunas funciones están disponibles
         MokoSupport.versionCodeLast = DigitalConver.byteArr2Int(lastCode);
-        LogModule.i("版本号末尾：" + MokoSupport.versionCodeLast);
-        // 判断是否升级
+        LogModule.i("Fin del número de versión：" + MokoSupport.versionCodeLast);
+        // Determinar si actualizar
         MokoSupport.canUpgrade = MokoSupport.versionCodeLast < MokoSupport.firmwareEnum.getLastestVersion();
 
         MokoSupport.getInstance().pollTask();

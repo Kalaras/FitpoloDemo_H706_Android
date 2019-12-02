@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @Date 2017/5/14 0014
  * @Author wenzheng.liu
- * @Description 蓝牙设备
+ * @Description Dispositivo Bluetooth
  * @ClassPath com.fitpolo.support.entity.BleDevice
  */
 public class BleDevice implements Serializable, Comparable<BleDevice> {

@@ -13,7 +13,7 @@ import java.util.Locale;
 /**
  * @Date 2018/10/8
  * @Author wenzheng.liu
- * @Description 设置手环语言
+ * @Description Establece el idioma de tu pulsera
  * @ClassPath com.fitpolo.support.task.ZWriteLanguageTask
  */
 public class ZWriteLanguageTask extends OrderTask {
@@ -49,7 +49,7 @@ public class ZWriteLanguageTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

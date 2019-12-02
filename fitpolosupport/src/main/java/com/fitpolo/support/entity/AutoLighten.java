@@ -3,13 +3,13 @@ package com.fitpolo.support.entity;
 /**
  * @Date 2018/4/9
  * @Author wenzheng.liu
- * @Description 翻腕亮屏
+ * @Description Enciende tu muñeca
  * @ClassPath com.fitpolo.support.entity.AutoLighten
  */
 public class AutoLighten {
-    public int autoLighten; // 翻腕亮屏开关，1：开；0：关；
-    public String startTime;// 开始时间，格式：HH:mm;
-    public String endTime;// 结束时间，格式：HH:mm;
+    public int autoLighten; // Encienda el interruptor de pantalla brillante de la muñeca, 1: encendido; 0: apagado;
+    public String startTime;//Hora de inicio, formato: HH: mm;
+    public String endTime;// Hora de finalización, formato: HH: mm;
 
 
     @Override

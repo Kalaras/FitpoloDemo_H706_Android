@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置单位类型
+ * @Description Establecer el tipo de unidad
  * @ClassPath com.fitpolo.support.task.ZWriteUnitTypeTask
  */
 public class ZWriteUnitTypeTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteUnitTypeTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

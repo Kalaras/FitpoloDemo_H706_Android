@@ -26,21 +26,21 @@ public class FitpoloNotificationCollectorService extends NotificationListenerSer
         LogModule.i("onNotificationPosted");
         String packageName = sbn.getPackageName();
         if (WECHAT.equals(packageName)) {
-            LogModule.i("收到微信通知");
+            LogModule.i("Reciba la notificación de WeChat");
         } else if (QQ.equals(packageName)) {
-            LogModule.i("收到QQ通知");
+            LogModule.i("Recibir notificación QQ");
         } else if (WHATSAPP.equals(packageName)) {
-            LogModule.i("收到WhatsApp通知");
+            LogModule.i("Reciba una notificación de WhatsApp");
         } else if (FACEBOOK.equals(packageName)) {
-            LogModule.i("收到Facebook通知");
+            LogModule.i("Recibir notificaciones de Facebook");
         } else if (TWITTER.equals(packageName)) {
-            LogModule.i("收到Twitter通知");
+            LogModule.i("Recibir notificaciones de Twitter");
         } else if (SKYPE.equals(packageName)) {
-            LogModule.i("收到Skype通知");
+            LogModule.i("Recibir notificaciones de Skype");
         } else if (SNAPCHAT.equals(packageName)) {
-            LogModule.i("收到Snapchat通知");
+            LogModule.i("Recibe una notificación de Snapchat");
         } else if (LINE.equals(packageName)) {
-            LogModule.i("收到Line通知");
+            LogModule.i("Recibir notificación de Line");
         }
         if (WECHAT.equals(packageName) || QQ.equals(packageName) || WHATSAPP.equals(packageName)
                 || FACEBOOK.equals(packageName) || TWITTER.equals(packageName) || SKYPE.equals(packageName)
@@ -49,13 +49,13 @@ public class FitpoloNotificationCollectorService extends NotificationListenerSer
             if (notification == null) {
                 return;
             }
-            // 当 API > 18 时，使用 extras 获取通知的详细信息
+            // Cuando API> 18, use extras para obtener detalles de notificaciones
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 Bundle extras = notification.extras;
                 if (extras != null) {
-                    // 获取通知标题
+                    // Obtener título de notificación
                     String title = extras.getString(Notification.EXTRA_TITLE, "");
-                    LogModule.i("通知标题：" + title);
+                    LogModule.i("Título de la notificación：" + title);
                 }
             }
         }

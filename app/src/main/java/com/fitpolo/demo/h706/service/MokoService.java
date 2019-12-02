@@ -55,7 +55,7 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer.create(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
             if (mediaPlayer == null) {
-                LogModule.i("未设置铃声");
+                LogModule.i("No hay tono de llamada establecido");
                 return;
             }
             mediaPlayer.start();
@@ -92,7 +92,7 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
         } else {
             mediaPlayer = MediaPlayer.create(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
             if (mediaPlayer == null) {
-                LogModule.i("未设置铃声");
+                LogModule.i("No hay tono de llamada establecido");
                 return;
             }
             mediaPlayer.start();
@@ -132,7 +132,7 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
 
     @Override
     public void onCreate() {
-        LogModule.i("创建MokoService...onCreate");
+        LogModule.i("Crear MokoService...onCreate");
         super.onCreate();
     }
 
@@ -143,7 +143,7 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
     /**
      * @Date 2017/5/23
      * @Author wenzheng.liu
-     * @Description 断开手环
+     * @Description Desconecta el brazalete
      */
     public void disConnectBle() {
         MokoSupport.getInstance().setReconnectCount(0);
@@ -160,7 +160,7 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        LogModule.i("启动MokoService...onStartCommand");
+        LogModule.i("Inicie MokoService...onStartCommand");
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -168,26 +168,26 @@ public class MokoService extends Service implements MokoConnStateCallback, MokoO
 
     @Override
     public IBinder onBind(Intent intent) {
-        LogModule.i("绑定MokoService...onBind");
+        LogModule.i("Encuadernación MokoService...onBind");
         return mBinder;
     }
 
     @Override
     public void onLowMemory() {
-        LogModule.i("内存吃紧，销毁MokoService...onLowMemory");
+        LogModule.i("Memoria apretada, destruye MokoService...onLowMemory");
         disConnectBle();
         super.onLowMemory();
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        LogModule.i("解绑MokoService...onUnbind");
+        LogModule.i("Desenlazar MokoService...onUnbind");
         return super.onUnbind(intent);
     }
 
     @Override
     public void onDestroy() {
-        LogModule.i("销毁MokoService...onDestroy");
+        LogModule.i("Destruye MokoService...onDestroy");
         disConnectBle();
         MokoSupport.getInstance().setOpenReConnect(false);
         super.onDestroy();

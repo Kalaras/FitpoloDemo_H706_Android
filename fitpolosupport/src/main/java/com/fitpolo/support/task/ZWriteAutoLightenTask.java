@@ -17,7 +17,7 @@ import java.util.Locale;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置翻腕亮屏
+ * @Description Configurar la pantalla brillante de la muñeca
  * @ClassPath com.fitpolo.support.task.ZWriteAutoLightenTask
  */
 public class ZWriteAutoLightenTask extends OrderTask {
@@ -59,7 +59,7 @@ public class ZWriteAutoLightenTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

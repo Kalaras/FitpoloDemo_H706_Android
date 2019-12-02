@@ -16,7 +16,7 @@ import no.nordicsemi.android.support.v18.scanner.ScanResult;
 /**
  * @Date 2017/12/12 0012
  * @Author wenzheng.liu
- * @Description 搜索设备回调类
+ * @Description Buscar clase de devolución de llamada del dispositivo
  * @ClassPath com.moko.support.handler.MokoLeScanHandler
  */
 public class MokoLeScanHandler extends ScanCallback {

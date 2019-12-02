@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @Date 2017/12/5 0005
  * @Author wenzheng.liu
- * @Description fitpolo工具类
+ * @Description herramientas fitpolo
  * @ClassPath com.fitpolo.support.utils.MokoUtils
  */
 public class MokoUtils {
@@ -49,7 +49,7 @@ public class MokoUtils {
     }
 
     /**
-     * 位运算结果的反推函数10 -> 2 | 8;
+     * Función inversa del resultado de la operación de bits 10-> 2 | 8;
      */
     static private List<Integer> getElement(int number) {
         List<Integer> result = new ArrayList<>();

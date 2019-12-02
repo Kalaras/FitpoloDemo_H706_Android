@@ -7,17 +7,17 @@ import java.util.Date;
 /**
  * @Date 2019/4/12
  * @Author wenzheng.liu
- * @Description 运动数据
+ * @Description Datos de ejercicio
  * @ClassPath com.fitpolo.support.entity.SportData
  */
 public class SportData implements Comparable<SportData> {
-    public int sportMode;// 运动模式
-    public String startTime;// 运动开始时间，yyyy-MM-dd HH:mm
-    public String sportCount;// 运动步数
-    public String duration;// 运动时间 min
-    public String distance;// 运动距离 km
-    public String calories;// 运动卡路里
-    public String speed;// 配速 /km
+    public int sportMode;// Modo deportivo
+    public String startTime;// Hora de inicio del movimiento, aaaa-MM-dd HH: mm
+    public String sportCount;// Número de pasos
+    public String duration;// Tiempo de ejercicio min
+    public String distance;// Distancia km
+    public String calories;// Calorías de ejercicio
+    public String speed;// Velocidad / km
 
 
     @Override

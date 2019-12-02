@@ -15,7 +15,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置通知
+ * @Description Configurar notificaciones
  * @ClassPath com.fitpolo.support.task.ZWriteNotifyTask
  */
 public class ZWriteNotifyTask extends OrderTask {
@@ -62,7 +62,7 @@ public class ZWriteNotifyTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

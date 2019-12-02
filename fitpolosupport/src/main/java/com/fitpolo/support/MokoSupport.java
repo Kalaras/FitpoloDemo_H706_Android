@@ -64,7 +64,7 @@ import no.nordicsemi.android.support.v18.scanner.ScanSettings;
 /**
  * @Date 2017/5/10
  * @Author wenzheng.liu
- * @Description 蓝牙工具类
+ * @Description Herramientas Bluetooth
  * @ClassPath com.fitpolo.support.MokoSupport
  */
 public class MokoSupport implements MokoResponseCallback {
@@ -73,7 +73,7 @@ public class MokoSupport implements MokoResponseCallback {
     public static final int HANDLER_MESSAGE_WHAT_SERVICES_DISCOVERED = 3;
     public static final int HANDLER_MESSAGE_WHAT_DISCONNECT = 4;
     public static final int HANDLER_MESSAGE_WHAT_RECONNECT = 5;
-    // 扫描结束时间
+    // Hora de finalización de escaneo
     private static final long SCAN_PERIOD = 5000;
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -120,7 +120,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 创建蓝牙适配器
+     * @Description Crea un adaptador Bluetooth
      */
     public void init(Context context) {
         LogModule.init(context);
@@ -136,7 +136,7 @@ public class MokoSupport implements MokoResponseCallback {
             mokoScanDeviceCallback.onStopScan();
             return;
         }
-        LogModule.i("开始扫描");
+        LogModule.i("Comience a escanear");
         final BluetoothLeScannerCompat scanner = BluetoothLeScannerCompat.getScanner();
         ScanSettings settings = new ScanSettings.Builder()
                 .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
@@ -169,24 +169,24 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 连接gatt
+     * @Description Connect gatt
      */
     public synchronized void connDevice(final Context context, String address, final MokoConnStateCallback mokoConnStateCallback) {
         setConnStateCallback(mokoConnStateCallback);
         if (isReConnecting) {
-            LogModule.i("正在重连中...");
+            LogModule.i("Reconectando...");
             return;
         }
         if (TextUtils.isEmpty(address)) {
-            LogModule.i("connDevice: 地址为空");
+            LogModule.i("connDevice: La dirección está vacía");
             return;
         }
         if (!isBluetoothOpen()) {
-            LogModule.i("connDevice: 蓝牙未打开");
+            LogModule.i("connDevice: Bluetooth no está activado");
             return;
         }
         if (isConnDevice(context, address)) {
-            LogModule.i("connDevice: 设备已连接");
+            LogModule.i("connDevice: El dispositivo está conectado");
             return;
         }
         final MokoConnStateHandler gattCallback = MokoConnStateHandler.getInstance();
@@ -200,12 +200,12 @@ public class MokoSupport implements MokoResponseCallback {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    LogModule.i("开始尝试连接");
+                    LogModule.i("Comienza a intentar conectarte");
                     mBluetoothGatt = (new BleConnectionCompat(context)).connectGatt(device, false, gattCallback);
                 }
             });
         } else {
-            LogModule.i("获取蓝牙设备失败");
+            LogModule.i("No se pudo obtener el dispositivo Bluetooth");
         }
     }
 
@@ -217,7 +217,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/11
      * @Author wenzheng.liu
-     * @Description 发送命令
+     * @Description Enviar comando
      */
     public void sendOrder(OrderTask... orderTasks) {
         if (orderTasks.length == 0) {
@@ -251,7 +251,7 @@ public class MokoSupport implements MokoResponseCallback {
      * @param callback
      * @Date 2017/5/11
      * @Author wenzheng.liu
-     * @Description 执行命令
+     * @Description Comando de ejecución
      */
     public void executeTask(MokoOrderTaskCallback callback) {
         if (callback != null && !isSyncData()) {
@@ -292,7 +292,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 判断是否已连接手环
+     * @Description Determinar si la pulsera está conectada
      */
     public boolean isConnDevice(Context context, String address) {
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
@@ -303,7 +303,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/6/22
      * @Author wenzheng.liu
-     * @Description 正在同步
+     * @Description Sincronización
      */
     public synchronized boolean isSyncData() {
         return mQueue != null && !mQueue.isEmpty();
@@ -312,10 +312,10 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/14 0014
      * @Author wenzheng.liu
-     * @Description 设置重连
+     * @Description Configurar reconexión
      */
     public void setOpenReConnect(boolean openReConnect) {
-        LogModule.i(openReConnect ? "打开重连" : "关闭重连");
+        LogModule.i(openReConnect ? "Volver a conectar" : "Apaga la reconexión");
         isOpenReConnect = openReConnect;
     }
 
@@ -331,7 +331,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/8/29
      * @Author wenzheng.liu
-     * @Description 获取重连次数
+     * @Description Obtenga tiempos de reconexión
      */
     public int getReconnectCount() {
         return reConnectCount;
@@ -340,7 +340,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/8/29
      * @Author wenzheng.liu
-     * @Description 设置重连次数
+     * @Description Establecer el número de reconexiones
      */
     public void setReconnectCount(int reConnectCount) {
         this.reConnectCount = reConnectCount;
@@ -350,7 +350,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 蓝牙是否开启
+     * @Description Si Bluetooth está activado
      */
     public boolean isBluetoothOpen() {
         return mBluetoothAdapter != null && mBluetoothAdapter.isEnabled();
@@ -359,7 +359,7 @@ public class MokoSupport implements MokoResponseCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 断开gattt
+     * @Description Desconectar gattt
      */
     public void disConnectBle() {
         mHandler.sendEmptyMessage(HANDLER_MESSAGE_WHAT_DISCONNECT);
@@ -374,11 +374,11 @@ public class MokoSupport implements MokoResponseCallback {
         if (!isSyncData()) {
             OrderType orderType = null;
             if (characteristic.getUuid().toString().equals(OrderType.STEP_CHARACTER.getUuid())) {
-                // 记步变化
+                // Cambio de paso
                 orderType = OrderType.STEP_CHARACTER;
             }
             if (characteristic.getUuid().toString().equals(OrderType.WRITE_CHARACTER.getUuid())) {
-                // 寻找手机
+                // Buscando un telefono
                 orderType = OrderType.WRITE_CHARACTER;
             }
             if (orderType != null) {
@@ -394,7 +394,7 @@ public class MokoSupport implements MokoResponseCallback {
                         break;
                     case WRITE_CHARACTER:
                         if (0x17 == (value[1] & 0xFF)) {
-                            LogModule.i("寻找手机");
+                            LogModule.i("Buscando un telefono");
                             mMokoConnStateCallback.onFindPhone();
                         }
                         break;
@@ -402,7 +402,7 @@ public class MokoSupport implements MokoResponseCallback {
             }
             return;
         }
-        // 非延时应答
+        // Respuesta no demorada
         OrderTask orderTask = mQueue.peek();
         String characteristicUuid = characteristic.getUuid().toString();
         if (value != null && value.length > 0 && orderTask != null) {
@@ -497,7 +497,7 @@ public class MokoSupport implements MokoResponseCallback {
                     isReConnecting = false;
                     break;
                 case HANDLER_MESSAGE_WHAT_SERVICES_DISCOVERED:
-                    LogModule.i("连接成功！");
+                    LogModule.i("Conectado exitosamente！");
                     mCharacteristicMap = MokoCharacteristicHandler.getInstance().getCharacteristics(mBluetoothGatt);
                     sendOrder(new OpenNotifyTask(OrderType.READ_CHARACTER, OrderEnum.READ_NOTIFY, null),
                             new OpenNotifyTask(OrderType.WRITE_CHARACTER, OrderEnum.WRITE_NOTIFY, null),
@@ -510,9 +510,9 @@ public class MokoSupport implements MokoResponseCallback {
                     }
                     if (mBluetoothGatt != null) {
                         if (refreshDeviceCache()) {
-                            LogModule.i("清理GATT层蓝牙缓存");
+                            LogModule.i("Borrar caché Bluetooth de capa GATT");
                         }
-                        LogModule.i("断开连接");
+                        LogModule.i("Desconectar");
                         mBluetoothGatt.close();
                         mBluetoothGatt.disconnect();
                         if (reConnectCount > 0) {
@@ -520,7 +520,7 @@ public class MokoSupport implements MokoResponseCallback {
                             mHandler.sendEmptyMessageDelayed(HANDLER_MESSAGE_WHAT_RECONNECT, 3000);
                         } else {
                             reConnectCount--;
-                            LogModule.i("重连失败，需要用户手动连接");
+                            LogModule.i("La reconexión falló, el usuario necesita conectarse manualmente");
                             isReConnecting = false;
                             mMokoConnStateCallback.onDisConnected();
                         }
@@ -545,7 +545,7 @@ public class MokoSupport implements MokoResponseCallback {
 
     private void startReConnect() {
         if (isOpenReConnect) {
-            LogModule.e("开始重连...");
+            LogModule.e("Comienza a reconectarte...");
             mRunnableReconnect = new ReConnRunnable();
             mExecutorService.execute(mRunnableReconnect);
         }
@@ -569,7 +569,7 @@ public class MokoSupport implements MokoResponseCallback {
                         if (isReConnectLimited) {
                             reConnectCount--;
                             if (reConnectCount == 0) {
-                                LogModule.i("提示重连超时...");
+                                LogModule.i("Tiempo de espera de reconexión rápido...");
                                 mMokoConnStateCallback.onConnTimeout(reConnectCount);
                             }
                         }
@@ -580,14 +580,14 @@ public class MokoSupport implements MokoResponseCallback {
                             @Override
                             public void onStartScan() {
                                 mReConnDeviceAddress = "";
-                                LogModule.i("重连开始扫描:" + reConnectCount);
+                                LogModule.i("Vuelva a conectar para comenzar a escanear:" + reConnectCount);
                             }
 
                             @Override
                             public void onScanDevice(BleDevice device) {
                                 if (mDeviceAddress.equals(device.address) && TextUtils.isEmpty(mReConnDeviceAddress)) {
                                     mReConnDeviceAddress = device.address;
-                                    LogModule.i("扫描到设备，开始连接...");
+                                    LogModule.i("Escanee al dispositivo y comience a conectarse...");
                                     final MokoConnStateHandler gattCallback = MokoConnStateHandler.getInstance();
                                     gattCallback.setMokoResponseCallback(MokoSupport.this);
                                     setConnStateCallback(mMokoConnStateCallback);
@@ -605,13 +605,13 @@ public class MokoSupport implements MokoResponseCallback {
                             @Override
                             public void onStopScan() {
                                 if (TextUtils.isEmpty(mReConnDeviceAddress)) {
-                                    LogModule.i("未扫描到设备...");
+                                    LogModule.i("Dispositivo no escaneado...");
                                     if (reConnectCount > 0) {
                                         mExecutorService.execute(mRunnableReconnect);
                                     } else {
                                         mReConnDeviceAddress = "";
                                         reConnectCount--;
-                                        LogModule.i("重连失败，需要用户手动连接");
+                                        LogModule.i("La reconexión falló, el usuario necesita conectarse manualmente");
                                         isReConnecting = false;
                                         mMokoConnStateCallback.onDisConnected();
                                     }
@@ -635,13 +635,13 @@ public class MokoSupport implements MokoResponseCallback {
                             }
                         }, 10000);
                     } else {
-                        LogModule.i("蓝牙未开启...");
+                        LogModule.i("Bluetooth no está activado...");
                         Thread.sleep(5000);
                         mExecutorService.execute(mRunnableReconnect);
                     }
                 } else {
                     isReConnecting = false;
-                    LogModule.i("设备已连接...");
+                    LogModule.i("El dispositivo está conectado...");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -649,7 +649,7 @@ public class MokoSupport implements MokoResponseCallback {
         }
     }
 
-    // 发送可监听命令
+    // Enviar comando escuchable
     private void sendNotifyOrder(OrderTask orderTask, final MokoCharacteristic mokoCharacteristic) {
         LogModule.i("app set device NOTIFY : " + orderTask.orderType.getName());
         mokoCharacteristic.characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
@@ -670,7 +670,7 @@ public class MokoSupport implements MokoResponseCallback {
         });
     }
 
-    // 发送可写无应答命令
+    // Enviar comando de escritura sin respuesta
     private void sendWriteNoResponseOrder(OrderTask orderTask, final MokoCharacteristic mokoCharacteristic) {
         LogModule.i("app to device WRITE no response : " + orderTask.orderType.getName());
         LogModule.i(DigitalConver.bytesToHexString(orderTask.assemble()));
@@ -684,7 +684,7 @@ public class MokoSupport implements MokoResponseCallback {
         });
     }
 
-    // 发送自定义命令（无队列）
+    // Enviar comando personalizado (sin cola)
     public void sendCustomOrder(OrderTask orderTask) {
         final MokoCharacteristic mokoCharacteristic = mCharacteristicMap.get(orderTask.orderType);
         if (mokoCharacteristic == null) {
@@ -696,7 +696,7 @@ public class MokoSupport implements MokoResponseCallback {
         }
     }
 
-    // 直接发送命令
+    // Enviar comando directamente
     public void sendDirectOrder(OrderTask orderTask) {
         final MokoCharacteristic mokoCharacteristic = mCharacteristicMap.get(orderTask.orderType);
         if (mokoCharacteristic == null) {

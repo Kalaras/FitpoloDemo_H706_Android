@@ -17,7 +17,7 @@ import java.io.File;
 /**
  * @Date 2017/5/9
  * @Author wenzheng.liu
- * @Description 日志模块
+ * @Description Módulo de registro
  * @ClassPath com.fitpolo.support.log.LogModule
  */
 public class LogModule {
@@ -26,12 +26,12 @@ public class LogModule {
     private static String PATH_LOGCAT;
 
     public static void init(Context context) {
-        // 初始化Xlog
+        // Inicializar Xlog
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            // 优先保存到SD卡中
+            // Guardar en la tarjeta SD primero
             PATH_LOGCAT = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + LOG_FOLDER;
         } else {
-            // 如果SD卡不存在，就保存到本应用的目录下
+            // Si la tarjeta SD no existe, guárdela en el directorio de la aplicación
             PATH_LOGCAT = context.getFilesDir().getAbsolutePath() + File.separator + LOG_FOLDER;
         }
         Printer filePrinter = new FilePrinter.Builder(PATH_LOGCAT)

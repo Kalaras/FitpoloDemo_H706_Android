@@ -16,7 +16,7 @@ public class Utils {
 
 
     /**
-     * 字符串时间转换成calendar
+     * Tiempo de cadena al calendario
      *
      * @param strDate
      * @param pattern
@@ -59,7 +59,7 @@ public class Utils {
     }
 
     /**
-     * 手机是否开启位置服务，如果没有开启那么所有app将不能使用定位功能
+     * Si el servicio de ubicación está habilitado en el teléfono. Si no está habilitado, entonces todas las aplicaciones no podrán usar la función de ubicación.
      */
     public static boolean isLocServiceEnable(Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

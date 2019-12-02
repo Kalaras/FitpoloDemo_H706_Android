@@ -3,7 +3,7 @@ package com.fitpolo.support.utils;
 /**
  * @Date 2017/5/15
  * @Author wenzheng.liu
- * @Description 数字转换类
+ * @Description Clase de conversión digital
  * @ClassPath com.fitpolo.support.utils.DigitalConver
  */
 public class DigitalConver {
@@ -11,7 +11,7 @@ public class DigitalConver {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description byte转16进制
+     * @Description byte a hexadecimal
      */
     public static String byte2HexString(byte b) {
         return String.format("%02X", b);
@@ -36,7 +36,7 @@ public class DigitalConver {
     /**
      * @Date 2017/5/15
      * @Author wenzheng.liu
-     * @Description 16进制转10进制
+     * @Description Hexadecimal a decimal
      */
     public static String decodeToString(String data) {
         String string = Integer.toString(Integer.parseInt(data, 16));
@@ -46,7 +46,7 @@ public class DigitalConver {
     /**
      * @Date 2017/5/16
      * @Author wenzheng.liu
-     * @Description 16进制转2进制
+     * @Description Hex a binario
      */
     public static String hexString2binaryString(String hexString) {
         if (hexString == null || hexString.length() % 2 != 0)
@@ -64,7 +64,7 @@ public class DigitalConver {
     /**
      * @Date 2017/5/16
      * @Author wenzheng.liu
-     * @Description byte转2进制
+     * @Description byte a binario
      */
     public static String byte2binaryString(byte b) {
         return hexString2binaryString(byte2HexString(b));
@@ -73,7 +73,7 @@ public class DigitalConver {
     /**
      * @Date 2017/6/9
      * @Author wenzheng.liu
-     * @Description 2进制转16进制
+     * @Description 2 hex a hex
      */
     public static String binaryString2hexString(String bString) {
         if (bString == null || bString.equals("") || bString.length() % 8 != 0)
@@ -93,7 +93,7 @@ public class DigitalConver {
     /**
      * @Date 2017/8/15
      * @Author wenzheng.liu
-     * @Description 将byte数组bRefArr转为一个整数, 字节数组的低位是整型的低字节位
+     * @Description Convierta la matriz de bytes bRefArr en un entero. Los bits de orden inferior de la matriz de bytes son los bits de orden inferior del entero.
      */
     public static int byteArr2Int(byte[] bRefArr) {
         return Integer.parseInt(DigitalConver.bytesToHexString(bRefArr), 16);
@@ -110,14 +110,14 @@ public class DigitalConver {
     /**
      * @Date 2017/8/14 0014
      * @Author wenzheng.liu
-     * @Description 整数转换成byte数组
+     * @Description Convertir entero a matriz de bytes
      */
     public static byte[] int2ByteArr(int iSource, int iArrayLen) {
         byte[] bLocalArr = new byte[iArrayLen];
         for (int i = 0; (i < 4) && (i < iArrayLen); i++) {
             bLocalArr[i] = (byte) (iSource >> 8 * i & 0xFF);
         }
-        // 数据反了,需要做个翻转
+        //Los datos se invierten y deben invertirse
         byte[] bytes = new byte[iArrayLen];
         for (int i = 0; i < bLocalArr.length; i++) {
             bytes[bLocalArr.length - 1 - i] = bLocalArr[i];
@@ -125,7 +125,7 @@ public class DigitalConver {
         return bytes;
     }
 
-    // 字符串转换为16进制
+    // String to Hex
     public static String string2Hex(String s) {
         String str = "";
         for (int i = 0; i < s.length(); i++) {
@@ -136,7 +136,7 @@ public class DigitalConver {
         return str;
     }
 
-    // 16进制转换为字符串
+    // Hexagonal a cuerda
     public static String hex2String(String s) {
         byte[] baKeyword = new byte[s.length() / 2];
         for (int i = 0; i < baKeyword.length; i++) {

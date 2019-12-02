@@ -7,12 +7,12 @@ import java.util.Date;
 /**
  * @Date 2017/5/15
  * @Author wenzheng.liu
- * @Description 记步间隔数据
+ * @Description Paso intervalo de datos
  * @ClassPath com.fitpolo.support.entity.DailyDetailStep
  */
 public class DailyDetailStep implements Comparable<DailyDetailStep> {
-    public String date;// 时间，yyyy-MM-dd HH:mm
-    public String count;// 步数
+    public String date;// Tiempo, aaaa-MM-dd HH: mm
+    public String count;// Pasos
 
     @Override
     public String toString() {

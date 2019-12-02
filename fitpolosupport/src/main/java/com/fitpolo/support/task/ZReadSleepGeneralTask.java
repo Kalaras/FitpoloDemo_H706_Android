@@ -17,7 +17,7 @@ import java.util.HashMap;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取睡眠概况
+ * @Description Leer perfil de sueño
  * @ClassPath com.fitpolo.support.task.ZReadSleepGeneralTask
  */
 public class ZReadSleepGeneralTask extends OrderTask {
@@ -69,7 +69,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
     public void parseValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
         int data_length = DigitalConver.byte2Int(value[2]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (header) {
             case HEADER_SLEEP_GENERAL_COUNT:
                 if (data_length != 2) {
@@ -81,12 +81,12 @@ public class ZReadSleepGeneralTask extends OrderTask {
                 sleepGeneralCount = DigitalConver.byteArr2Int(count);
                 MokoSupport.getInstance().setSleepIndexCount(sleepGeneralCount);
                 MokoSupport.getInstance().setSleepRecordCount(sleepGeneralCount * 2);
-                LogModule.i("有" + sleepGeneralCount + "条睡眠概况");
+                LogModule.i("Si" + sleepGeneralCount + "Perfiles de sueño");
                 MokoSupport.getInstance().initSleepIndexList();
                 sleepsMap = MokoSupport.getInstance().getSleepsMap();
                 dailySleeps = MokoSupport.getInstance().getDailySleeps();
                 delayTime = sleepGeneralCount == 0 ? DEFAULT_DELAY_TIME : DEFAULT_DELAY_TIME + 100 * (sleepGeneralCount + sleepGeneralCount * 2);
-                // 拿到条数后再启动超时任务
+                // Después de obtener el número, inicie la tarea de tiempo de espera
                 MokoSupport.getInstance().timeoutHandler(this);
                 break;
             case HEADER_SLEEP_GENERAL:
@@ -107,7 +107,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
                     MokoSupport.getInstance().setSleepIndexCount(sleepGeneralCount);
                     MokoSupport.getInstance().setSleepsMap(sleepsMap);
                     if (sleepGeneralCount > 0) {
-                        LogModule.i("还有" + sleepGeneralCount + "条睡眠概况数据未同步");
+                        LogModule.i("Y" + sleepGeneralCount + "Datos del perfil de suspensión no sincronizados");
                         return;
                     }
                 }
@@ -116,7 +116,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
                 return;
         }
         if (!dailySleeps.isEmpty()) {
-            // 请求完index后请求record
+            // Solicitar registro después de solicitar índice
             ZReadSleepDetailTask sleepDetailTask = new ZReadSleepDetailTask(callback, lastSyncTime);
             MokoSupport.getInstance().sendCustomOrder(sleepDetailTask);
         } else {
@@ -137,7 +137,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
     public void parseRecordValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
         int data_length = DigitalConver.byte2Int(value[2]);
-        LogModule.i("读取未同步的睡眠详情数据成功");
+        LogModule.i("Lectura de datos de detalles de sueño no sincronizados con éxito");
         switch (header) {
             case HEADER_SLEEP_DETAIL_COUNT:
                 if (data_length != 2) {
@@ -146,7 +146,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
                 byte[] count = new byte[2];
                 System.arraycopy(value, 3, count, 0, 2);
                 sleepDetailCount = DigitalConver.byteArr2Int(count);
-                LogModule.i("有" + sleepDetailCount + "条睡眠详情");
+                LogModule.i("Si" + sleepDetailCount + "Detalles del sueño");
                 MokoSupport.getInstance().setSleepRecordCount(sleepDetailCount);
                 break;
             case HEADER_SLEEP_DETAIL:
@@ -158,7 +158,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
                     sleepDetailCount--;
                     MokoSupport.getInstance().setSleepRecordCount(sleepDetailCount);
                     if (sleepDetailCount > 0) {
-                        LogModule.i("还有" + sleepDetailCount + "条睡眠详情数据未同步");
+                        LogModule.i("Y" + sleepDetailCount + "Datos de detalles del sueño no sincronizados");
                         return;
                     }
                 }
@@ -183,7 +183,7 @@ public class ZReadSleepGeneralTask extends OrderTask {
     public boolean timeoutPreTask() {
         if (!isReceiveDetail) {
             if (!isCountSuccess) {
-                LogModule.i(order.getOrderName() + "个数超时");
+                LogModule.i(order.getOrderName() + "Tiempo de espera");
             } else {
                 isReceiveDetail = true;
                 return false;

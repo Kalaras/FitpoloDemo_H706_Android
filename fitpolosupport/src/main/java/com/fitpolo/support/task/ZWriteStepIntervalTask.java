@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2018/10/8
  * @Author wenzheng.liu
- * @Description 设置记步间隔
+ * @Description Establecer el intervalo de paso
  * @ClassPath com.fitpolo.support.task.ZWriteStepIntervalTask
  */
 public class ZWriteStepIntervalTask extends OrderTask {
@@ -43,7 +43,7 @@ public class ZWriteStepIntervalTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

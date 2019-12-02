@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置手环闹钟
+ * @Description Configura la alarma de tu pulsera
  * @ClassPath com.fitpolo.support.task.ZWriteAlarmsTask
  */
 public class ZWriteAlarmsTask extends OrderTask {
@@ -49,7 +49,7 @@ public class ZWriteAlarmsTask extends OrderTask {
     @Override
     public void parseValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (header) {
             case HEADER_ALARMS_COUNT:
             case HEADER_ALARMS:

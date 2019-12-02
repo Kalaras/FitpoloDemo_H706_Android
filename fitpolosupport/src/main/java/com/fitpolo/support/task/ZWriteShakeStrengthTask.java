@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2019/3/1
  * @Author wenzheng.liu
- * @Description 设置震动强度
+ * @Description Establecer intensidad de vibración
  * @ClassPath com.fitpolo.support.task.ZWriteShakeStrengthTask
  */
 public class ZWriteShakeStrengthTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteShakeStrengthTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

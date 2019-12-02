@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置个人信息
+ * @Description Establecer información personal
  * @ClassPath com.fitpolo.support.task.ZWriteUserInfoTask
  */
 public class ZWriteUserInfoTask extends OrderTask {
@@ -52,7 +52,7 @@ public class ZWriteUserInfoTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

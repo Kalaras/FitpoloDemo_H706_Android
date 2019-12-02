@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2018/10/8
  * @Author wenzheng.liu
- * @Description 打开寻找手机
+ * @Description Abierto para telefono
  * @ClassPath com.fitpolo.support.task.ZWriteFindPhoneTask
  */
 public class ZWriteFindPhoneTask extends OrderTask {
@@ -42,7 +42,7 @@ public class ZWriteFindPhoneTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

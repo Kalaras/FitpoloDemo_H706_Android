@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * @Date 2017/5/16
  * @Author wenzheng.liu
- * @Description 心率，可按时间排序
+ * @Description Frecuencia cardíaca, ordenable por tiempo
  */
 public class HeartRate implements Comparable<HeartRate> {
     public String time;

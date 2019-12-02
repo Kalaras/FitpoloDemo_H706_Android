@@ -10,7 +10,7 @@ import com.fitpolo.support.log.LogModule;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 发送命令任务
+ * @Description Enviar tarea de comando
  * @ClassPath com.fitpolo.support.task.OrderTask
  */
 public abstract class OrderTask {
@@ -80,7 +80,7 @@ public abstract class OrderTask {
     };
 
     public boolean timeoutPreTask() {
-        LogModule.i(order.getOrderName() + "超时");
+        LogModule.i(order.getOrderName() + "Tiempo de espera");
         return true;
     }
 }

@@ -3,7 +3,7 @@ package com.fitpolo.support.entity;
 /**
  * @Date 2018/4/12
  * @Author wenzheng.liu
- * @Description 版本
+ * @Description Versión
  * @ClassPath com.fitpolo.support.entity.DeviceTypeEnum
  */
 public enum DeviceTypeEnum {

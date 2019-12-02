@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取电量
+ * @Description Leer la batería
  * @ClassPath com.fitpolo.support.task.ZReadBatteryTask
  */
 public class ZReadBatteryTask extends OrderTask {
@@ -41,10 +41,10 @@ public class ZReadBatteryTask extends OrderTask {
             return;
         }
         int batteryQuantity = DigitalConver.byte2Int(value[3]);
-        LogModule.i("电池电量：" + batteryQuantity);
+        LogModule.i("Nivel de la batería：" + batteryQuantity);
         MokoSupport.getInstance().setBatteryQuantity(batteryQuantity);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

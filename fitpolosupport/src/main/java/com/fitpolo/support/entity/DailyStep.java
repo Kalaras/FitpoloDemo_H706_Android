@@ -8,15 +8,15 @@ import java.util.Locale;
 /**
  * @Date 2017/5/15
  * @Author wenzheng.liu
- * @Description 记步数据
+ * @Description Datos de paso
  * @ClassPath com.fitpolo.support.entity.DailyStep
  */
 public class DailyStep implements Comparable<DailyStep> {
-    public String date;// 日期，yyyy-MM-dd
-    public String count;// 步数
-    public String duration;// 运动时间
-    public String distance;// 运动距离
-    public String calories;// 运动消耗卡路里
+    public String date;// Fecha, aaaa-MM-dd
+    public String count;// Pasos
+    public String duration;// Tiempo de ejercicio
+    public String distance;// Distancia de movimiento
+    public String calories;// Calorías quemadas por ejercicio
 
     @Override
     public String toString() {

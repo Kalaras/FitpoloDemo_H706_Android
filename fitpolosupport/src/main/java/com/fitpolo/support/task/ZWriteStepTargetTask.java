@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置记步目标
+ * @Description Establece tu objetivo de paso
  * @ClassPath com.fitpolo.support.task.ZWriteStepTargetTask
  */
 public class ZWriteStepTargetTask extends OrderTask {
@@ -46,7 +46,7 @@ public class ZWriteStepTargetTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

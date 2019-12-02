@@ -15,7 +15,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取久坐提醒
+ * @Description Leer recordatorio sedentario
  * @ClassPath com.fitpolo.support.task.ZReadSitAlertTask
  */
 public class ZReadSitAlertTask extends OrderTask {
@@ -59,7 +59,7 @@ public class ZReadSitAlertTask extends OrderTask {
         sitAlert.endTime = new SimpleDateFormat("HH:mm").format(calendar.getTime());
         MokoSupport.getInstance().setSitAlert(sitAlert);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

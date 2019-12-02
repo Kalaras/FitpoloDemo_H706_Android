@@ -3,13 +3,13 @@ package com.fitpolo.support.entity;
 /**
  * @Date 2017/5/14 0014
  * @Author wenzheng.liu
- * @Description 久坐提醒
+ * @Description Recordatorio sedentario
  * @ClassPath com.fitpolo.support.entity.SitAlert
  */
 public class SitAlert {
-    public int alertSwitch; // 久坐提醒开关，1：开；0：关；
-    public String startTime;// 开始时间，格式：HH:mm;
-    public String endTime;// 结束时间，格式：HH:mm;
+    public int alertSwitch; // Interruptor recordatorio sedentario, 1: encendido; 0: apagado;
+    public String startTime;// Hora de inicio, formato: HH: mm;
+    public String endTime;// Hora de finalización, formato: HH: mm;
 
     @Override
     public String toString() {

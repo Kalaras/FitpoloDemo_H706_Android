@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置久坐提醒
+ * @Description Establecer recordatorio sedentario
  * @ClassPath com.fitpolo.support.task.ZWriteSitAlertTask
  */
 public class ZWriteSitAlertTask extends OrderTask {
@@ -50,7 +50,7 @@ public class ZWriteSitAlertTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

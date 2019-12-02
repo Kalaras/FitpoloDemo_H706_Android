@@ -13,7 +13,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置系统时间
+ * @Description Establecer la hora del sistema
  * @ClassPath com.fitpolo.support.task.ZWriteSystemTimeTask
  */
 public class ZWriteSystemTimeTask extends OrderTask {
@@ -59,7 +59,7 @@ public class ZWriteSystemTimeTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

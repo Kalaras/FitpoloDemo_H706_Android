@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取表盘
+ * @Description Lee el dial
  * @ClassPath com.fitpolo.support.task.ZReadStepTask
  */
 public class ZReadDialTask extends OrderTask {
@@ -42,10 +42,10 @@ public class ZReadDialTask extends OrderTask {
             return;
         }
         int dial = DigitalConver.byte2Int(value[3]);
-        LogModule.i("表盘：" + dial);
+        LogModule.i("Marcar：" + dial);
         MokoSupport.getInstance().setDial(dial);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

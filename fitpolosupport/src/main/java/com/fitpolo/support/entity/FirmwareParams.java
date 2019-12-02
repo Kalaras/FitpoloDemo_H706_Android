@@ -3,16 +3,16 @@ package com.fitpolo.support.entity;
 /**
  * @Date 2018/4/10
  * @Author wenzheng.liu
- * @Description 硬件参数
+ * @Description Parámetros de hardware
  * @ClassPath com.fitpolo.support.entity.FirmwareParams
  */
 public class FirmwareParams {
     public String test; // bit0:flash, bit1:G sensor,bit2: hr检测;
-    public int reflectiveThreshold;// 反光阈值,默认1380;
-    public int reflectiveValue;// 当前反光值;
-    public int batchYear;// 生产批次年;
-    public int batchWeek;// 生产批次周;
-    public int speedUnit;// 蓝牙连接配速单位是1.25ms;
+    public int reflectiveThreshold;// Umbral reflectante, por defecto 1380;
+    public int reflectiveValue;// Valor de reflexión actual
+    public int batchYear;// Año de producción por lotes
+    public int batchWeek;// Semana de producción por lotes
+    public int speedUnit;// La unidad de velocidad de conexión Bluetooth es de 1,25 ms;
 
     @Override
     public String toString() {

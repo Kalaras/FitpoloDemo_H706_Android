@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2019/2/28
  * @Author wenzheng.liu
- * @Description 关机
+ * @Description Apagado
  * @ClassPath com.fitpolo.support.task.ZWriteCloseTask
  */
 public class ZWriteCloseTask extends OrderTask {
@@ -44,7 +44,7 @@ public class ZWriteCloseTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

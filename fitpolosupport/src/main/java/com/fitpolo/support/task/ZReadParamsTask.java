@@ -12,7 +12,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取硬件参数
+ * @Description Leer parámetros de hardware
  * @ClassPath com.fitpolo.support.task.ZReadParamsTask
  */
 public class ZReadParamsTask extends OrderTask {
@@ -41,7 +41,7 @@ public class ZReadParamsTask extends OrderTask {
         if (0x08 != DigitalConver.byte2Int(value[2])) {
             return;
         }
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         FirmwareParams params = new FirmwareParams();
@@ -56,14 +56,14 @@ public class ZReadParamsTask extends OrderTask {
         params.batchWeek = DigitalConver.byte2Int(value[9]);
         params.speedUnit = DigitalConver.byte2Int(value[10]);
 
-        LogModule.i("flash状态：" + params.test.substring(7, 8));
-        LogModule.i("G sensor状态：" + params.test.substring(6, 7));
-        LogModule.i("hr状态：" + params.test.substring(5, 6));
-        LogModule.i("当前反光阈值：" + params.reflectiveThreshold);
-        LogModule.i("当前反光值：" + params.reflectiveValue);
-        LogModule.i("生产批次年：" + params.batchYear);
-        LogModule.i("生产批次周：" + params.batchWeek);
-        LogModule.i("蓝牙连接配速单位：" + params.speedUnit);
+        LogModule.i("estado de flash：" + params.test.substring(7, 8));
+        LogModule.i("Estado del sensor G：" + params.test.substring(6, 7));
+        LogModule.i("estado de la hora：" + params.test.substring(5, 6));
+        LogModule.i("Umbral reflexivo actual：" + params.reflectiveThreshold);
+        LogModule.i("Valor de reflexión actual：" + params.reflectiveValue);
+        LogModule.i("Año de producción por lotes：" + params.batchYear);
+        LogModule.i("Semana de producción por lotes：" + params.batchWeek);
+        LogModule.i("Unidad de velocidad de conexión Bluetooth：" + params.speedUnit);
 
         MokoSupport.getInstance().setProductBatch(String.format("%d.%d", params.batchYear, params.batchWeek));
         MokoSupport.getInstance().setParams(params);

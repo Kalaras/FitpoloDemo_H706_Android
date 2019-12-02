@@ -17,7 +17,7 @@ import java.util.HashMap;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取心率
+ * @Description Leer frecuencia cardíaca
  * @ClassPath com.fitpolo.support.task.ZReadHeartRateTask
  */
 public class ZReadHeartRateTask extends OrderTask {
@@ -62,7 +62,7 @@ public class ZReadHeartRateTask extends OrderTask {
     @Override
     public void parseValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (header) {
             case HEADER_HEART_RATE_COUNT:
                 isCountSuccess = true;
@@ -70,12 +70,12 @@ public class ZReadHeartRateTask extends OrderTask {
                 System.arraycopy(value, 2, count, 0, 2);
                 heartRateCount = DigitalConver.byteArr2Int(count);
                 MokoSupport.getInstance().setHeartRatesCount(heartRateCount);
-                LogModule.i("有" + heartRateCount + "条心率数据");
+                LogModule.i("Si" + heartRateCount + "Datos de frecuencia cardíaca");
                 MokoSupport.getInstance().initHeartRatesList();
                 heartRatesMap = MokoSupport.getInstance().getHeartRatesMap();
                 heartRates = MokoSupport.getInstance().getHeartRates();
                 if (heartRateCount != 0) {
-                    // 拿到条数后再启动超时任务
+                    // Después de obtener el número, inicie la tarea de tiempo de espera
                     heartRatesMap.put(heartRateCount, false);
                     MokoSupport.getInstance().setHeartRatesMap(heartRatesMap);
                     MokoSupport.getInstance().timeoutHandler(this);
@@ -98,7 +98,7 @@ public class ZReadHeartRateTask extends OrderTask {
                     MokoSupport.getInstance().setHeartRatesCount(heartRateCount);
                     MokoSupport.getInstance().setHeartRates(heartRates);
                     if (heartRateCount > 0) {
-                        LogModule.i("还有" + heartRateCount + "条心率数据未同步");
+                        LogModule.i("Y" + heartRateCount + "Los datos de frecuencia cardíaca no están sincronizados");
                         heartRatesMap.put(heartRateCount, false);
                         MokoSupport.getInstance().setHeartRatesMap(heartRatesMap);
                         orderTimeoutHandler(heartRateCount);
@@ -112,7 +112,7 @@ public class ZReadHeartRateTask extends OrderTask {
         if (heartRateCount != 0) {
             return;
         }
-        // 对心率数据做判重处理，避免时间重复造成的数据问题
+        // Discrimine los datos de frecuencia cardíaca para evitar problemas de datos causados ​​por el tiempo repetido
         HashMap<String, HeartRate> removeRepeatMap = new HashMap<>();
         for (HeartRate heartRate : heartRates) {
             removeRepeatMap.put(heartRate.time, heartRate);
@@ -139,7 +139,7 @@ public class ZReadHeartRateTask extends OrderTask {
                         && heartRatesMap.get(heartRateCount) != null
                         && !heartRatesMap.get(heartRateCount)) {
                     orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
-                    LogModule.i("获取心率第" + heartRateCount + "个数据超时");
+                    LogModule.i("Obtener frecuencia cardíaca" + heartRateCount + "Tiempo de espera de datos");
                     MokoSupport.getInstance().pollTask();
                     callback.onOrderTimeout(response);
                     MokoSupport.getInstance().executeTask(callback);
@@ -151,7 +151,7 @@ public class ZReadHeartRateTask extends OrderTask {
     @Override
     public boolean timeoutPreTask() {
         if (!isCountSuccess) {
-            LogModule.i(order.getOrderName() + "个数超时");
+            LogModule.i(order.getOrderName() + "Tiempo de espera");
         } else {
             return false;
         }

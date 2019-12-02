@@ -50,7 +50,7 @@ public abstract class FitpoloBaseAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * 绑定ViewHolder
+     * Vista vinculante
      *
      * @param position
      * @param viewHolder
@@ -61,7 +61,7 @@ public abstract class FitpoloBaseAdapter<T> extends BaseAdapter {
                                            View convertView, ViewGroup parent);
 
     /**
-     * 创建ViewHolder
+     * Crear ViewHolder
      *
      * @param position
      * @param inflater

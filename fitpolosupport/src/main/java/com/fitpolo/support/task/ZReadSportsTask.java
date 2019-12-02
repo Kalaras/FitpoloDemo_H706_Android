@@ -16,7 +16,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取运动数据
+ * @Description Leer datos de movimiento
  * @ClassPath com.fitpolo.support.task.ZReadSportsTask
  */
 public class ZReadSportsTask extends OrderTask {
@@ -61,7 +61,7 @@ public class ZReadSportsTask extends OrderTask {
     @Override
     public void parseValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (header) {
             case HEADER_SPORTS_COUNT:
                 int data_length = DigitalConver.byte2Int(value[2]);
@@ -73,11 +73,11 @@ public class ZReadSportsTask extends OrderTask {
                 System.arraycopy(value, 3, count, 0, 2);
                 sportsCount = DigitalConver.byteArr2Int(count);
                 MokoSupport.getInstance().setSportsCount(sportsCount);
-                LogModule.i("有" + sportsCount + "条运动数据");
+                LogModule.i("Si" + sportsCount + "Datos de movimiento");
                 MokoSupport.getInstance().initSportDatas();
                 sportDatas = MokoSupport.getInstance().getSportDatas();
                 delayTime = sportsCount == 0 ? DEFAULT_DELAY_TIME : DEFAULT_DELAY_TIME + 100 * sportsCount;
-                // 拿到条数后再启动超时任务
+                // Después de obtener el número, inicie la tarea de tiempo de espera
                 MokoSupport.getInstance().timeoutHandler(this);
                 break;
             case HEADER_SPORTS_DATA:
@@ -90,7 +90,7 @@ public class ZReadSportsTask extends OrderTask {
                     MokoSupport.getInstance().setSportDatas(sportDatas);
                     MokoSupport.getInstance().setSportsCount(sportsCount);
                     if (sportsCount > 0) {
-                        LogModule.i("还有" + sportsCount + "条运动数据未同步");
+                        LogModule.i("Y" + sportsCount + "Datos de movimiento fuera de sincronización");
                         return;
                     }
                 }
@@ -113,7 +113,7 @@ public class ZReadSportsTask extends OrderTask {
     public boolean timeoutPreTask() {
         if (!isReceiveDetail) {
             if (!isCountSuccess) {
-                LogModule.i(order.getOrderName() + "个数超时");
+                LogModule.i(order.getOrderName() + "Tiempo de espera");
             } else {
                 isReceiveDetail = true;
                 return false;

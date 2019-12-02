@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置心率间隔
+ * @Description Establecer el intervalo de frecuencia cardíaca
  * @ClassPath com.fitpolo.support.task.ZWriteHeartRateIntervalTask
  */
 public class ZWriteHeartRateIntervalTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteHeartRateIntervalTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

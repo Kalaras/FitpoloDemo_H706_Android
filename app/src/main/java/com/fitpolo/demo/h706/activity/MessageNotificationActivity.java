@@ -36,7 +36,7 @@ public class MessageNotificationActivity extends BaseActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mService = ((MokoService.LocalBinder) service).getService();
-            // 注册广播接收器
+            // Registrar receptor de difusión
             IntentFilter filter = new IntentFilter();
             filter.addAction(MokoConstants.ACTION_CONN_STATUS_DISCONNECTED);
             filter.addAction(MokoConstants.ACTION_DISCOVER_TIMEOUT);

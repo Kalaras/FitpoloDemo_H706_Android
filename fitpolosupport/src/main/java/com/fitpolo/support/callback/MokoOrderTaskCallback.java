@@ -5,7 +5,7 @@ import com.fitpolo.support.entity.OrderTaskResponse;
 /**
  * @Date 2017/5/10
  * @Author wenzheng.liu
- * @Description 返回数据回调类
+ * @Description Clase de devolución de datos de devolución
  * @ClassPath com.fitpolo.support.callback.MokoOrderTaskCallback
  */
 public interface MokoOrderTaskCallback {

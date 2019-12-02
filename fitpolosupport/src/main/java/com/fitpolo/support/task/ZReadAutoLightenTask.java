@@ -15,7 +15,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取翻腕亮屏
+ * @Description Leer la pantalla brillante de la muñeca
  * @ClassPath com.fitpolo.support.task.ZReadAutoLightenTask
  */
 public class ZReadAutoLightenTask extends OrderTask {
@@ -59,7 +59,7 @@ public class ZReadAutoLightenTask extends OrderTask {
         autoLighten.endTime = new SimpleDateFormat("HH:mm").format(calendar.getTime());
         MokoSupport.getInstance().setAutoLighten(autoLighten);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

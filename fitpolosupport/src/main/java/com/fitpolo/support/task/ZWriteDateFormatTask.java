@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2019/3/1
  * @Author wenzheng.liu
- * @Description 设置日期制式
+ * @Description Establecer el formato de fecha
  * @ClassPath com.fitpolo.support.task.ZWriteDateFormatTask
  */
 public class ZWriteDateFormatTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteDateFormatTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

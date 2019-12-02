@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取显示上次屏幕
+ * @Description Leer mostrar última pantalla
  * @ClassPath com.fitpolo.support.task.ZReadLastScreenTask
  */
 public class ZReadLastScreenTask extends OrderTask {
@@ -42,7 +42,7 @@ public class ZReadLastScreenTask extends OrderTask {
         }
         MokoSupport.getInstance().setLastScreen(DigitalConver.byte2Int(value[3]) == 1);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

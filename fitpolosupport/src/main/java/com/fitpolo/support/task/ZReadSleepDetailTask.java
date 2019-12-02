@@ -10,7 +10,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取睡眠详情
+ * @Description Leer detalles del sueño
  * @ClassPath com.fitpolo.support.task.ZReadSleepDetailTask
  */
 public class ZReadSleepDetailTask extends OrderTask {

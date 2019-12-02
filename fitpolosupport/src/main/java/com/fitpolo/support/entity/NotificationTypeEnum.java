@@ -7,7 +7,7 @@ package com.fitpolo.support.entity;
  * @ClassPath com.fitpolo.support.entity.NotificationTypeEnum
  */
 public enum NotificationTypeEnum {
-    WECHAT("微信", "com.tencent.mm"),
+    WECHAT("微信", "com.tencent.mm"),  //WeChat
     QQ("QQ", "com.tencent.mobileqq"),
     QQHD("QQHD", "com.tencent.minihd.qq"),
     WHATSAPP("WHATSAPP", "com.whatsapp"),

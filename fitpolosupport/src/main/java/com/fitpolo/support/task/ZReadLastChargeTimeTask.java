@@ -14,7 +14,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取上次充电时间
+ * @Description Leer el último tiempo de carga
  * @ClassPath com.fitpolo.support.task.ZReadLastChargeTimeTask
  */
 public class ZReadLastChargeTimeTask extends OrderTask {
@@ -50,7 +50,7 @@ public class ZReadLastChargeTimeTask extends OrderTask {
         int hour = DigitalConver.byte2Int(value[6]);
         int minute = DigitalConver.byte2Int(value[7]);
 
-        // 上次充电时间
+        // Último tiempo de carga
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month - 1);
@@ -61,7 +61,7 @@ public class ZReadLastChargeTimeTask extends OrderTask {
 
         MokoSupport.getInstance().setLastChargeTime(lastChargeTime);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

@@ -5,17 +5,17 @@ import java.util.List;
 /**
  * @Date 2017/5/15
  * @Author wenzheng.liu
- * @Description 睡眠数据
+ * @Description Datos del sueño
  * @ClassPath com.fitpolo.support.entity.DailySleep
  */
 public class DailySleep {
-    public String date;// 日期，yyyy-MM-dd
-    public String startTime;// 开始时间，yyyy-MM-dd HH:mm
-    public String endTime;// 结束时间，yyyy-MM-dd HH:mm
-    public String deepDuration;// 深睡时长，单位min
-    public String lightDuration;// 浅睡时长，单位min
-    public String awakeDuration;// 清醒时长，单位min
-    public List<String> records;// 睡眠记录
+    public String date;// Fecha, aaaa-MM-dd
+    public String startTime;// Hora de inicio, aaaa-MM-dd HH: mm
+    public String endTime;// Hora de finalización, aaaa-MM-dd HH: mm
+    public String deepDuration;// Duración del sueño profundo, unidad min.
+    public String lightDuration;// Duración ligera del sueño, unidad min.
+    public String awakeDuration;// Despertar duración en min
+    public List<String> records;// Registro de sueño
 
 
     @Override

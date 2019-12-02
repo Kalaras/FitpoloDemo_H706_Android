@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置表盘
+ * @Description Configurar la esfera del reloj
  * @ClassPath com.fitpolo.support.task.ZWriteDialTask
  */
 public class ZWriteDialTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteDialTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

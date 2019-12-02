@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取单位类型
+ * @Description Leer tipo de unidad
  * @ClassPath com.fitpolo.support.task.ZReadUnitTypeTask
  */
 public class ZReadUnitTypeTask extends OrderTask {
@@ -42,7 +42,7 @@ public class ZReadUnitTypeTask extends OrderTask {
         }
         MokoSupport.getInstance().setUnitTypeBritish(DigitalConver.byte2Int(value[3]) == 1);
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
 
         MokoSupport.getInstance().pollTask();

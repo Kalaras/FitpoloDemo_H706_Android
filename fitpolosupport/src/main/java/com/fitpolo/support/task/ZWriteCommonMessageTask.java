@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2019/3/18
  * @Author wenzheng.liu
- * @Description 设置通用通知
+ * @Description Configurar notificaciones generales
  * @ClassPath com.fitpolo.support.task.ZWriteCommonMessageTask
  */
 public class ZWriteCommonMessageTask extends OrderTask {
@@ -29,7 +29,7 @@ public class ZWriteCommonMessageTask extends OrderTask {
         super(OrderType.WRITE_CHARACTER, OrderEnum.Z_WRITE_COMMON_NOTIFY, callback, OrderTask.RESPONSE_TYPE_WRITE_NO_RESPONSE);
         if (showText.length() != 0) {
             if (showText.length() > 30) {
-                // 只取30个字
+                // Toma solo 30 palabras
                 String simpleText = showText.substring(0, 30);
                 unicodeText = cnToUnicode(simpleText);
             } else {
@@ -49,7 +49,7 @@ public class ZWriteCommonMessageTask extends OrderTask {
             dataCount = 1;
             lastDataLength = 0;
         }
-        LogModule.w("总包数：" + dataCount);
+        LogModule.w("Numero total de paquetes：" + dataCount);
         dataIndex = 1;
         this.isOpen = isOpen;
         this.isPhoneCall = isPhoneCall;
@@ -57,7 +57,7 @@ public class ZWriteCommonMessageTask extends OrderTask {
 
     @Override
     public byte[] assemble() {
-        LogModule.w("发送包序号：" + dataIndex);
+        LogModule.w("Enviar número de secuencia de paquete：" + dataIndex);
         orderData = new byte[dataIndex < dataCount ? 20 : (8 + lastDataLength / 2)];
         orderData[0] = (byte) MokoConstants.HEADER_WRITE_SEND;
         orderData[1] = (byte) order.getOrderHeader();
@@ -90,10 +90,10 @@ public class ZWriteCommonMessageTask extends OrderTask {
             return;
         }
         dataIndex = DigitalConver.byte2Int(value[4]);
-        LogModule.w("接收包序号：" + dataIndex);
+        LogModule.w("Número de secuencia de paquete recibido：" + dataIndex);
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         if (dataIndex == dataCount) {
-            LogModule.i(order.getOrderName() + "成功");
+            LogModule.i(order.getOrderName() + "El éxito");
             MokoSupport.getInstance().pollTask();
             callback.onOrderResult(response);
             MokoSupport.getInstance().executeTask(callback);
@@ -116,7 +116,7 @@ public class ZWriteCommonMessageTask extends OrderTask {
                 hexB = "0" + hexB;
             }
             if (!"000a".equals(hexB)) {
-                // 需要转换
+                // Necesita conversión
                 String hexB1 = hexB.substring(0, 2);
                 String hexB2 = hexB.substring(2, 4);
                 String hex = hexB2 + hexB1;

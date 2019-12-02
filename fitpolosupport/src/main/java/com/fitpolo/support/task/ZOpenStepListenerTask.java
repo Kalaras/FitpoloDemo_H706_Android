@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 监听记步
+ * @Description Escucha los pasos
  * @ClassPath com.fitpolo.support.task.ZOpenStepListenerTask
  */
 public class ZOpenStepListenerTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZOpenStepListenerTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

@@ -36,7 +36,7 @@ public class BaseActivity extends Activity {
         finish();
     }
 
-    // 记录上次页面控件点击时间,屏蔽无效点击事件
+    // Registre el tiempo de clic de control de la última página y bloquee los eventos de clic no válidos
     protected long mLastOnClickTime = 0;
 
     public boolean isWindowLocked() {

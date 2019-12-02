@@ -11,7 +11,7 @@ import com.fitpolo.support.utils.DigitalConver;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 设置时间格式
+ * @Description Establecer formato de hora
  * @ClassPath com.fitpolo.support.task.ZWriteTimeFormatTask
  */
 public class ZWriteTimeFormatTask extends OrderTask {
@@ -45,7 +45,7 @@ public class ZWriteTimeFormatTask extends OrderTask {
             return;
         }
 
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         orderStatus = OrderTask.ORDER_STATUS_SUCCESS;
         MokoSupport.getInstance().pollTask();
         callback.onOrderResult(response);

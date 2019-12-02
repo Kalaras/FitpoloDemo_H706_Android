@@ -5,28 +5,28 @@ import com.fitpolo.support.entity.BleDevice;
 /**
  * @Date 2017/5/10
  * @Author wenzheng.liu
- * @Description 扫描设备回调
+ * @Description Escanear devolución de llamada del dispositivo
  * @ClassPath com.fitpolo.support.callback.MokoScanDeviceCallback
  */
 public interface MokoScanDeviceCallback {
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 开始扫描
+     * @Description Comience a escanear
      */
     void onStartScan();
 
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 扫描的设备
+     * @Description Dispositivos escaneados
      */
     void onScanDevice(BleDevice device);
 
     /**
      * @Date 2017/5/10
      * @Author wenzheng.liu
-     * @Description 结束扫描
+     * @Description Fin de escaneo
      */
     void onStopScan();
 }

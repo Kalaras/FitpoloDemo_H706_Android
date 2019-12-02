@@ -16,7 +16,7 @@ import java.util.Calendar;
 /**
  * @Date 2017/5/11
  * @Author wenzheng.liu
- * @Description 读取记步间隔
+ * @Description Leer intervalo de paso
  * @ClassPath com.fitpolo.support.task.ZReadStepIntervalTask
  */
 public class ZReadStepIntervalTask extends OrderTask {
@@ -62,7 +62,7 @@ public class ZReadStepIntervalTask extends OrderTask {
     public void parseValue(byte[] value) {
         int header = DigitalConver.byte2Int(value[1]);
         int data_length = DigitalConver.byte2Int(value[2]);
-        LogModule.i(order.getOrderName() + "成功");
+        LogModule.i(order.getOrderName() + "El éxito");
         switch (header) {
             case HEADER_STEP_COUNT:
                 if (data_length != 2) {
@@ -73,11 +73,11 @@ public class ZReadStepIntervalTask extends OrderTask {
                 System.arraycopy(value, 3, count, 0, 2);
                 stepDetailCount = DigitalConver.byteArr2Int(count);
                 MokoSupport.getInstance().setDailyStepCount(stepDetailCount);
-                LogModule.i("有" + stepDetailCount + "条记步间隔数据");
+                LogModule.i("Si" + stepDetailCount + "Paso intervalo de datos");
                 MokoSupport.getInstance().initDetailStepsList();
                 dailyDetailSteps = MokoSupport.getInstance().getDailyDetailSteps();
                 delayTime = stepDetailCount == 0 ? DEFAULT_DELAY_TIME : DEFAULT_DELAY_TIME + 100 * stepDetailCount;
-                // 拿到条数后再启动超时任务
+                // Después de obtener el número, inicie la tarea de tiempo de espera
                 MokoSupport.getInstance().timeoutHandler(this);
                 break;
             case HEADER_STEP:
@@ -93,7 +93,7 @@ public class ZReadStepIntervalTask extends OrderTask {
                     MokoSupport.getInstance().setDailyDetailSteps(dailyDetailSteps);
                     MokoSupport.getInstance().setDailyDetailStepCount(stepDetailCount);
                     if (stepDetailCount > 0) {
-                        LogModule.i("还有" + stepDetailCount + "条记步间隔数据未同步");
+                        LogModule.i("Y" + stepDetailCount + "Los datos del intervalo de paso no están sincronizados");
                         return;
                     }
                 }
@@ -116,7 +116,7 @@ public class ZReadStepIntervalTask extends OrderTask {
     public boolean timeoutPreTask() {
         if (!isReceiveDetail) {
             if (!isCountSuccess) {
-                LogModule.i(order.getOrderName() + "个数超时");
+                LogModule.i(order.getOrderName() + "Tiempo de espera");
             } else {
                 isReceiveDetail = true;
                 return false;
