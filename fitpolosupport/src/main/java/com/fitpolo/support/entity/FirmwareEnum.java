@@ -3,7 +3,7 @@ package com.fitpolo.support.entity;
 
 public enum FirmwareEnum {
     H706("0006", 9, "0006_0001_0009_DFU.zip"),
-    ;
+    H707("0007", 1, "");
 
 
     private String header;
@@ -33,6 +33,9 @@ public enum FirmwareEnum {
             if (firwmareEnum.getHeader().equals(header)) {
                 if ("0006".equals(header)) {
                     return H706;
+                }
+                else if ("0007".equals(header)) {
+                    return H707;
                 }
                 return firwmareEnum;
             }

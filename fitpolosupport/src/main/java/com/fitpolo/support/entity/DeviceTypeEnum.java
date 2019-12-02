@@ -7,8 +7,8 @@ package com.fitpolo.support.entity;
  * @ClassPath com.fitpolo.support.entity.DeviceTypeEnum
  */
 public enum DeviceTypeEnum {
-    H706("06")
-    ;
+    H706("06"),
+    H707("06");
 
     private String lastCode;
 

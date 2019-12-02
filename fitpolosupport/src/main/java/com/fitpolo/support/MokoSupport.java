@@ -144,9 +144,9 @@ public class MokoSupport implements MokoResponseCallback {
                 .setUseHardwareFilteringIfSupported(false)
                 .build();
         List<ScanFilter> scanFilterList = new ArrayList<>();
-        ScanFilter.Builder builder = new ScanFilter.Builder();
+        /*ScanFilter.Builder builder = new ScanFilter.Builder();
         builder.setServiceUuid(new ParcelUuid(SERVICE_UUID));
-        scanFilterList.add(builder.build());
+        scanFilterList.add(builder.build());*/
         final MokoLeScanHandler mokoLeScanHandler = new MokoLeScanHandler(mokoScanDeviceCallback);
         scanner.startScan(scanFilterList, settings, mokoLeScanHandler);
         mokoScanDeviceCallback.onStartScan();

@@ -359,6 +359,7 @@ public class SendOrderActivity extends BaseActivity {
 
     public void setUserInfo(View view) {
         UserInfo userInfo = new UserInfo();
+
         userInfo.age = 23;
         userInfo.gender = 0;
         userInfo.height = 170;
